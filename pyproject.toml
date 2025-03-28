@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mycoder"
+version = "0.1.0"
+authors = [
+    {name = "MyCoder Contributors", email = "info@mycoder.org"},
+]
+description = "Advanced AI coding assistant with tool capabilities"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "aiofiles>=23.2.1",
+    "anthropic>=0.22.2",
+    "click>=8.1.7",
+    "httpx>=0.27.0",
+    "openai>=1.12.0",
+    "pydantic>=2.6.1",
+    "pydantic-settings>=2.1.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.7.0",
+    "rich-click>=1.7.2",
+    
+    # Dependencies for new tools
+    "playwright>=1.42.0",
+    
+    # Optional dependencies for MCP (will still install but won't have MCP functionality)
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.23.2",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.7.1",
+    "ruff>=0.1.6",
+]
+
+[project.scripts]
+mycoder = "mycoder.cli.main:cli"
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by formatter
+]
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mycoder"] 
