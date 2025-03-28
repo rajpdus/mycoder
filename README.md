@@ -1,6 +1,6 @@
-# MyCoder-Py
+# MyCoder
 
-A Python implementation of MyCoder - an AI-powered coding assistant leveraging large language models.
+An AI-powered coding assistant leveraging large language models.
 
 ## Features
 
@@ -17,8 +17,6 @@ A Python implementation of MyCoder - an AI-powered coding assistant leveraging l
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/mycoder-py.git
-cd mycoder-py
 
 # Install with Poetry (recommended)
 poetry install
