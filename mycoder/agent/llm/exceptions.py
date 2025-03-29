@@ -22,8 +22,8 @@ class LLMError(Exception):
         
         Args:
             message: The error message
-            provider: The provider name (e.g., "openai")
-            model: The model name (e.g., "gpt-4")
+            provider: The provider name (e.g., "anthropic")
+            model: The model name (e.g., "claude-3-sonnet")
             details: Additional error details
         """
         self.provider = provider
@@ -47,25 +47,25 @@ class ProviderAPIError(LLMError):
     def __init__(
         self,
         message: str,
-        provider: Optional[str] = None,
+        provider: str,
         model: Optional[str] = None,
         status_code: Optional[int] = None,
-        details: Optional[Dict[str, Any]] = None
+        original_error: Optional[Exception] = None
     ):
         """
         Initialize the provider API error.
         
         Args:
             message: The error message
-            provider: The provider name
-            model: The model name
-            status_code: The HTTP status code
-            details: Additional error details
+            provider: The provider name (e.g., "anthropic")
+            model: The model name if applicable
+            status_code: The HTTP status code if applicable
+            original_error: The original exception
         """
         self.status_code = status_code
         
         # Add status code to details
-        details = details or {}
+        details = {}
         if status_code:
             details["status_code"] = status_code
         

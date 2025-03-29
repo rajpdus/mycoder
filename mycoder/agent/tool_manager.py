@@ -124,7 +124,7 @@ class ToolManager:
         Get schemas for all tools in the format expected by a specific LLM provider.
         
         Args:
-            provider: LLM provider name (e.g., "anthropic", "openai")
+            provider: LLM provider name (currently only "anthropic" supported)
             
         Returns:
             List[Dict[str, Any]]: List of tool schemas

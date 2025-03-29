@@ -102,37 +102,20 @@ class Tool(ABC):
     
     def get_schema_for_llm(self, provider: str = "anthropic") -> Dict[str, Any]:
         """
-        Generate a schema representation suitable for the specified LLM provider.
-        
-        Different LLM providers may have different formats for tool/function definitions.
+        Generate a schema representation suitable for the LLM provider.
         
         Args:
-            provider: LLM provider name (e.g., "anthropic", "openai")
+            provider: LLM provider name (currently only "anthropic" supported)
             
         Returns:
             Dict[str, Any]: Schema in the format expected by the LLM provider
         """
-        # Default schema format (Anthropic-like)
+        # Default schema format (Anthropic)
         schema = {
             "name": self.name,
             "description": self.description,
             "parameters": self._get_parameters_schema(),
         }
-        
-        # Provider-specific adjustments
-        if provider.lower() == "openai":
-            # OpenAI Function Calling format
-            schema["parameters"] = {
-                "type": "object",
-                "properties": {
-                    name: self._get_property_schema(field)
-                    for name, field in self.args_schema.model_fields.items()
-                },
-                "required": [
-                    name for name, field in self.args_schema.model_fields.items()
-                    if field.is_required
-                ]
-            }
         
         return schema
     

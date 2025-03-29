@@ -153,10 +153,5 @@ def get_api_key_error(provider: str) -> str:
             "Anthropic API key not found. Please set the ANTHROPIC_API_KEY "
             "environment variable or add it to your .env file."
         )
-    elif provider == "openai":
-        return (
-            "OpenAI API key not found. Please set the OPENAI_API_KEY "
-            "environment variable or add it to your .env file."
-        )
     else:
         return f"API key not found for provider '{provider}'. Please check your configuration." 

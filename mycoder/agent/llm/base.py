@@ -84,10 +84,10 @@ class LLMProvider(ABC):
     @abstractmethod
     def provider_name(self) -> str:
         """
-        Get the name of the provider.
+        Get the name of the LLM provider.
         
         Returns:
-            str: The name of the provider (e.g., "anthropic", "openai")
+            str: The name of the provider (e.g., "anthropic")
         """
         pass
     

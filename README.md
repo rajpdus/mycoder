@@ -4,7 +4,7 @@ An AI-powered coding assistant leveraging large language models.
 
 ## Features
 
-- 🤖 **AI-Powered**: Uses Anthropic's Claude, OpenAI models, and Ollama for intelligent coding assistance
+- 🤖 **AI-Powered**: Uses Anthropic's Claude for intelligent coding assistance
 - 🛠️ **Extensible Tool System**: Modular architecture with various tools for file operations, shell commands, and more
 - 🌐 **Web Automation**: Browser automation with Playwright for interacting with web applications
 - 🔄 **Parallel Execution**: Can spawn sub-agents for concurrent task processing
@@ -36,9 +36,8 @@ playwright install
 MyCoder-Py requires API keys to function with LLM providers. Create a `.env` file in the root directory:
 
 ```
-# Choose one or more providers to configure
+# Configure Anthropic
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
-OPENAI_API_KEY=your_openai_api_key_here
 # For Ollama, you can set the base URL (defaults to http://localhost:11434)
 OLLAMA_BASE_URL=http://localhost:11434
 ```
@@ -55,8 +54,8 @@ mycoder -i
 # Read prompt from a file
 mycoder -f prompt.txt
 
-# Select a specific AI provider and model
-mycoder --provider openai --model gpt-4 "Create a REST API with FastAPI"
+# Select a specific model
+mycoder --model claude-3-opus-20240229 "Create a REST API with FastAPI"
 
 # Use Ollama with a specific model
 mycoder --provider ollama --model llama3 "Explain how to use virtual environments in Python"

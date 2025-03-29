@@ -20,11 +20,6 @@ class Settings:
         self.provider_type = os.getenv('MYCODER_PROVIDER', 'anthropic')
         self.default_model = os.getenv('MYCODER_DEFAULT_MODEL', 'claude-3-sonnet-20240229')
         
-        # OpenAI settings
-        self.openai_api_key = os.getenv('OPENAI_API_KEY', '')
-        self.openai_organization = os.getenv('OPENAI_ORGANIZATION', '')
-        self.openai_base_url = os.getenv('OPENAI_BASE_URL', 'https://api.openai.com/v1')
-        
         # Anthropic settings
         self.anthropic_api_key = os.getenv('ANTHROPIC_API_KEY', '')
         self.anthropic_base_url = os.getenv('ANTHROPIC_BASE_URL', 'https://api.anthropic.com')
