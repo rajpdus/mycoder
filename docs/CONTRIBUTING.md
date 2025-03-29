@@ -87,7 +87,7 @@ When adding new features, please update the relevant documentation:
 
 ### Adding a New Tool
 
-1. Create a new file in `src/mycoder/agent/tools/` or add to an existing file
+1. Create a new file in `mycoder/agent/tools/` or add to an existing file
 2. Define a Pydantic model for your tool's arguments
 3. Implement the Tool class by extending the base Tool class
 4. Add appropriate error handling
@@ -96,7 +96,7 @@ When adding new features, please update the relevant documentation:
 
 ### Adding a New LLM Provider
 
-1. Create a new file in `src/mycoder/agent/llm/` (e.g., `anthropic.py`)
+1. Create a new file in `mycoder/agent/llm/` (e.g., `anthropic.py`)
 2. Implement the provider by extending the LLMProvider abstract class
 3. Create a configuration class if needed
 4. Add factory functions for easy instantiation
